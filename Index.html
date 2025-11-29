@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CEID Exchange</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- p5.js for the morphing title animation -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <!-- Bubble background layer -->
+    <div class="bubble-stage">
+      <div class="column column-left">
+        <div class="column-label column-label--teach">TEACH</div>
+        <div id="left-bubbles" class="bubble-layer"></div>
+      </div>
+      <div class="column column-right">
+        <div class="column-label column-label--learn">LEARN</div>
+        <div id="right-bubbles" class="bubble-layer"></div>
+      </div>
+    </div>
+
+    <!-- Debug / status at bottom -->
+    <div id="status-line" class="status-line">
+      Loading CEID Exchange…
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

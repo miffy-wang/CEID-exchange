@@ -1,0 +1,198 @@
+/* ===== Global layout ===== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    sans-serif;
+  overflow: hidden;
+  background-color: #1b1919;
+}
+
+.app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* ===== Bubble area ===== */
+.bubble-stage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  pointer-events: none;
+}
+
+.column {
+  position: relative;
+  overflow: hidden;
+}
+
+.column-left {
+  background: radial-gradient(
+    circle at top left,
+    rgba(15, 165, 229, 0.22),
+    rgba(15, 23, 42, 0.8)
+  );
+  backdrop-filter: blur(18px);
+}
+
+.column-right {
+  background: radial-gradient(
+    circle at bottom right,
+    rgba(233, 127, 136, 0.22),
+    rgba(29, 25, 57, 0.8)
+  );
+  backdrop-filter: blur(18px);
+}
+
+.bubble-layer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* ===== Bubbles ===== */
+
+.bubble {
+  position: absolute;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 4px 8px;
+
+  opacity: 0;
+  animation: bubbleAppear 1.2s ease forwards;
+}
+
+.bubble--teach {
+  background: radial-gradient(circle at top left, #145a70, #0ea5e9);
+  color: #145a70;
+  box-shadow:
+    0 0 0 0 rgba(56, 189, 248, 0.4),
+    0 16px 40px rgba(15, 23, 42, 0.9);
+  animation:
+    bubbleAppear 1.2s ease forwards,
+    bubblePulseCool 4s ease-in-out infinite alternate;
+}
+
+.bubble--learn {
+  background: radial-gradient(circle at top right, #fb7185, #f97316);
+  color: #f97316;
+  box-shadow:
+    0 0 0 0 rgba(248, 113, 113, 0.4),
+    0 16px 40px rgba(15, 23, 42, 0.9);
+  animation:
+    bubbleAppear 1.2s ease forwards,
+    bubblePulseWarm 4s ease-in-out infinite alternate;
+}
+
+.column-label {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.8;
+  color: #e2e8f0;
+}
+
+.column-label--teach {
+  color: #bae6fd;
+}
+.column-label--learn {
+  color: #fed7e2;
+}
+
+/* ===== Status line ===== */
+.status-line {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  font-size: 0.7rem;
+  color: #94a3b8;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+
+/* ===== Animations ===== */
+
+@keyframes bubbleAppear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.9;
+  }
+}
+
+@keyframes bubblePulseCool {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(56, 189, 248, 0.4),
+      0 10px 25px rgba(15, 23, 42, 0.9);
+  }
+  100% {
+    box-shadow:
+      0 0 35px 18px rgba(56, 189, 248, 0.06),
+      0 16px 40px rgba(15, 23, 42, 0.9);
+  }
+}
+
+@keyframes bubblePulseWarm {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(248, 113, 113, 0.4),
+      0 16px 40px rgba(15, 23, 42, 0.9);
+  }
+  100% {
+    box-shadow:
+      0 0 35px 18px rgba(248, 113, 113, 0.06),
+      0 16px 40px rgba(15, 23, 42, 0.9);
+  }
+}
+
+@media (max-width: 800px) {
+  .bubble-stage {
+    grid-template-columns: 1fr;
+    padding: 18vw 8vw;
+  }
+
+  .column {
+    border-radius: 26px;
+  }
+}
+
+.bubble--fade-out {
+  animation: bubbleFadeOut 0.6s ease forwards;
+}
+
+@keyframes bubbleFadeOut {
+  from {
+    opacity: 0.9;
+  }
+  to {
+    opacity: 0;
+  }
+}

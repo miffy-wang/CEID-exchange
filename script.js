@@ -372,14 +372,14 @@ setInterval(async () => {
 }, 60000);
 
 // ==========================
-// Morphing points (words + QR)
+// Morphing words + QR
 // ==========================
 
 let pointSets = [];
 let color_1;
 let color_2;
 
-// per-phase point counts
+//point counts
 const BASE_POINTS = 2000;
 const QR_POINTS = 7000;    // denser for QR
 
@@ -401,7 +401,6 @@ function setup() {
   color_2 = color(25, 140, 250);
 
   pointSets = [];
-
 
   for (let i = 0; i < PHASES.length; i++) {
     const phase = PHASES[i];
@@ -434,7 +433,6 @@ function setup() {
 
       pointSets.push(pts);
     } else {
-      // ----- TEXT SHAPE -----
       let points_found = 0;
       const target = BASE_POINTS;
 
